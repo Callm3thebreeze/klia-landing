@@ -2,29 +2,49 @@
 // Hero section component
 ---
 
-<section class='bg-gradient-to-br from-primary-50 to-white py-20 lg:py-32'>
-  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+<section
+  class='relative bg-gradient-to-br from-primary-50 to-white py-20 lg:py-32 overflow-hidden -mt-16 pt-36 lg:pt-48'
+>
+  <!-- Imagen de fondo -->
+  <div
+    class='absolute inset-0 bg-cover bg-center bg-no-repeat -top-16'
+    style='background-image: url("/images/hero.jpg");'
+  >
+    <!-- Overlay para mejorar legibilidad -->
+    <div class='absolute inset-0 bg-white bg-opacity-85 md:bg-opacity-75'></div>
+  </div>
+  <!-- Contenido del hero -->
+  <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10'>
     <div class='text-center'>
       <!-- Logo grande -->
       <div class='flex justify-center mb-8'>
         <img
-          src='/images/klia-logo.svg'
+          src='/images/logos/klia-logo.svg'
           alt='KLIA Logo'
-          class='h-24 w-auto lg:h-32'
+          class='h-36 w-auto lg:h-32'
         />
       </div>
-
-      <!-- Título -->
-      <h1 class='text-4xl lg:text-6xl font-bold text-gray-900 mb-6'>
-        <span class='text-primary-600'>KLIA</span>
+      <!-- Título (oculto visualmente pero accesible) -->
+      <h1 class='sr-only'>
+        KLIA - Router de IA Empresarial con Privacidad y Versatilidad
       </h1>
-
       <!-- Subtítulo -->
       <p
-        class='text-xl lg:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed'
+        class='text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed'
       >
-        La solución innovadora que revolucionará tu forma de trabajar
+        El router inteligente que conecta tu empresa con los mejores modelos de
+        IA, garantizando privacidad y versatilidad en cada tarea.
       </p>
+      <!-- Botón CTA -->
+      <div class='mb-12'>
+        <a
+          id='hero-cta-btn'
+          class='bg-primary-500 bg-opacity-80 hover:bg-opacity-100 text-white font-semibold py-3 px-8 rounded-full text-lg transition-[background-color,box-shadow,transform] duration-300 ease-out shadow-md hover:shadow-lg active:scale-95 hover:scale-105'
+          href='https://claudia.laude.tech/login'
+        >
+          Probar KLIA
+        </a>
+      </div>
     </div>
   </div>
 </section>

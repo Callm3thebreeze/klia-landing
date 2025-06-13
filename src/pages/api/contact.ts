@@ -38,12 +38,10 @@ export const POST: APIRoute = async ({ request }) => {
           headers: { 'Content-Type': 'application/json' },
         }
       );
-    }
-
-    // Preparar el contenido del email
+    } // Preparar el contenido del email
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2563eb;">Nuevo contacto desde KLIA Landing</h2>
+        <h2 style="color: #F49739;">Nuevo contacto desde KLIA Landing</h2>
         
         <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3 style="margin-top: 0; color: #374151;">Información de contacto:</h3>
@@ -55,7 +53,7 @@ export const POST: APIRoute = async ({ request }) => {
         
         <div style="margin: 20px 0;">
           <h3 style="color: #374151;">Mensaje:</h3>
-          <div style="background: white; padding: 15px; border-left: 4px solid #2563eb; border-radius: 4px;">
+          <div style="background: white; padding: 15px; border-left: 4px solid #EE964B; border-radius: 4px;">
             ${message.replace(/\n/g, '<br>')}
           </div>
         </div>

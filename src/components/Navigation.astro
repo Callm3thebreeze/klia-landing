@@ -2,15 +2,14 @@
 // Navigation component
 ---
 
-<nav class='bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50'>
+<nav
+  class='bg-white bg-opacity-20 backdrop-blur-sm shadow-sm border-b border-gray-200 border-opacity-30 sticky top-0 z-[100]'
+>
   <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
     <div class='flex justify-between items-center h-16'>
       <!-- Logo -->
       <div class='flex items-center'>
-        <div class='flex-shrink-0 flex items-center'>
-          <img class='h-8 w-auto' src='/images/klia-logo.svg' alt='KLIA' />
-          <span class='ml-2 text-xl font-bold text-gray-900'>KLIA</span>
-        </div>
+        <div class='flex-shrink-0 flex items-center'></div>
       </div>
 
       <!-- Desktop Navigation -->
@@ -30,7 +29,7 @@
           </a>
           <button
             id='nav-contact-btn'
-            class='bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors'
+            class='bg-primary-600 bg-opacity-80 hover:bg-opacity-100 text-white px-4 py-2 rounded-full text-sm font-medium transition-[background-color,transform] duration-300 ease-out active:scale-95 hover:scale-105'
             onclick="document.getElementById('learn-more-btn').click()"
           >
             Contáctanos
@@ -76,7 +75,7 @@
           Contacto
         </a>
         <button
-          class='w-full text-left bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-md text-sm font-medium'
+          class='w-full text-left bg-primary-600 bg-opacity-80 hover:bg-opacity-100 text-white px-3 py-2 rounded-full text-sm font-medium transition-[background-color,transform] duration-300 ease-out active:scale-95 hover:scale-105'
           onclick="document.getElementById('learn-more-btn').click()"
         >
           Contáctanos

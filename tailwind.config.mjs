@@ -5,16 +5,22 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          50: '#fef7ed',
+          100: '#fdeacc',
+          200: '#fad195',
+          300: '#f6b65c',
+          400: '#f39d3c',
+          500: '#F49739',
+          600: '#d67b28',
+          700: '#b8611e',
+          800: '#954e1e',
+          900: '#7a431c',
         },
         gray: {
           900: '#111827',
           800: '#1f2937',
           700: '#374151',
-          600: '#4b5563',
+          600: '#1C3341',
           500: '#6b7280',
           400: '#9ca3af',
           300: '#d1d5db',
@@ -24,7 +30,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Lato', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        inter: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },
