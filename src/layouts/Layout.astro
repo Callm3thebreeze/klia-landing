@@ -1,0 +1,118 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'KLIA - Producto innovador' } = Astro.props;
+---
+
+<!doctype html>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content={description} />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+      rel='stylesheet'
+    />
+  </head>
+  <body class='font-sans bg-white text-gray-900'>
+    <slot />
+
+    <script>
+      // Script para manejar el popup del formulario
+      document.addEventListener('DOMContentLoaded', function () {
+        const learnMoreBtn = document.getElementById('learn-more-btn');
+        const popup = document.getElementById('contact-popup');
+        const closeBtn = document.getElementById('close-popup');
+        const overlay = document.getElementById('popup-overlay');
+        const contactForm = document.getElementById('contact-form');
+
+        if (learnMoreBtn && popup) {
+          learnMoreBtn.addEventListener('click', function () {
+            popup.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+          });
+        }
+
+        function closePopup() {
+          if (popup) {
+            popup.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+          }
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closePopup);
+        }
+
+        if (overlay) {
+          overlay.addEventListener('click', closePopup);
+        }
+        // Manejar envío del formulario
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector(
+              'button[type="submit"]'
+            ) as HTMLButtonElement;
+            if (!submitBtn) return;
+
+            const originalText = submitBtn.textContent || 'Enviar mensaje';
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm as HTMLFormElement);
+
+            try {
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData,
+              });
+
+              const result = await response.json();
+
+              if (response.ok) {
+                alert(
+                  '¡Mensaje enviado correctamente! Te contactaremos pronto.'
+                );
+                (contactForm as HTMLFormElement).reset();
+                closePopup();
+              } else {
+                alert(
+                  'Error al enviar el mensaje: ' +
+                    (result.error || 'Inténtalo de nuevo')
+                );
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              alert('Error al enviar el mensaje. Inténtalo de nuevo.');
+            } finally {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            }
+          });
+        }
+
+        // Cerrar popup con tecla Escape
+        document.addEventListener('keydown', function (e) {
+          if (
+            e.key === 'Escape' &&
+            popup &&
+            !popup.classList.contains('hidden')
+          ) {
+            closePopup();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
